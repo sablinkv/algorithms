@@ -1,2 +1,5 @@
+#pragma once
+
+// Utility headers
 #include <utility/traits.hpp>
 #include <utility/utility.hpp>

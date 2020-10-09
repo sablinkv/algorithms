@@ -1,3 +1,6 @@
+#pragma once
+
+// Search headers
 #include <searching/linear_search.hpp>
 #include <searching/binary_search.hpp>
 #include <searching/random_search.hpp>

@@ -1,3 +1,6 @@
+#pragma once
+
+// Sorting headers
 #include <sorting/binary_insertion_sort.hpp>
 #include <sorting/bubble_sort.hpp>
 #include <sorting/bucket_sort.hpp>
