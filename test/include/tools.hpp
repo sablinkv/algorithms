@@ -3,6 +3,21 @@
 #include <random>
 #include <algorithm>
 #include <chrono>
+#include <array>
+#include <functional>
+
+class ComparatorTest : public ::testing::TestWithParam<std::function<bool(const int, const int)>> {
+public:
+	void SetUp() override {
+        comparator = GetParam();
+	}
+
+    virtual ~ComparatorTest() {}
+
+protected:
+	const std::array<int, 2> container {1,2};
+    std::function<bool(const int, const int)> comparator;
+};
 
 template<class T>
 class RandomGenerator {
