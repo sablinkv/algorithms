@@ -1,0 +1,16 @@
+# Ignore build directory
+build/*
+CMakeCache.*
+CMakeFiles/*
+Testing/*
+
+# VSCode files
+.vscode/*
+
+# Build results
+Debug/
+Release/
+x64/
+x86/
+bin/
+lib/
