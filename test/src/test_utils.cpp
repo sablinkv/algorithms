@@ -2,6 +2,8 @@
 #include <utils>
 #include <list>
 #include <forward_list>
+#include <array>
+#include <functional>
 
 TEST(IsSortable, Pointer) {
     using namespace algorithms;
@@ -47,6 +49,19 @@ TEST(IsSortable, ForwardIterator) {
 	ASSERT_TRUE(static_cast<bool>(is_sortable_v<iterator_type, std::forward_iterator_tag>));
 }
 
+class ComparatorTest : public ::testing::TestWithParam<std::function<bool(const int, const int)>> {
+public:
+	void SetUp() override {
+        comparator = GetParam();
+	}
+
+    virtual ~ComparatorTest() {}
+
+protected:
+	const std::array<int, 2> container {1,2};
+    std::function<bool(const int, const int)> comparator;
+};
+
 class ValidComparatorTest : public ComparatorTest {};
 
 class InvalidComparatorTest: public ComparatorTest {};
@@ -67,13 +82,13 @@ TEST_P(InvalidComparatorTest, VerifyComparator) {
 	ASSERT_THROW(verify_comparator(second, first, comparator), std::domain_error);
 }
 
-INSTANTIATE_TEST_CASE_P(UtilsTest, ValidComparatorTest,
+INSTANTIATE_TEST_SUITE_P(UtilsTest, ValidComparatorTest,
 	::testing::Values(
 		std::less<>(), [](const auto& lhs, const auto& rhs){return lhs < rhs;},
 		std::greater<>(), [](const auto& lhs, const auto& rhs){return lhs > rhs;})
 );
 
-INSTANTIATE_TEST_CASE_P(UtilsTest, InvalidComparatorTest,
+INSTANTIATE_TEST_SUITE_P(UtilsTest, InvalidComparatorTest,
 	::testing::Values(std::less_equal<>(), [](const auto& lhs, const auto& rhs){return lhs <= rhs;},
 		std::greater_equal<>(), [](const auto& lhs, const auto& rhs){return lhs >= rhs;},
 		std::equal_to<>(), [](const auto& lhs, const auto& rhs){return lhs == rhs;},

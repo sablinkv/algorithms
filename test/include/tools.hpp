@@ -3,21 +3,6 @@
 #include <random>
 #include <algorithm>
 #include <chrono>
-#include <array>
-#include <functional>
-
-class ComparatorTest : public ::testing::TestWithParam<std::function<bool(const int, const int)>> {
-public:
-	void SetUp() override {
-        comparator = GetParam();
-	}
-
-    virtual ~ComparatorTest() {}
-
-protected:
-	const std::array<int, 2> container {1,2};
-    std::function<bool(const int, const int)> comparator;
-};
 
 template<class T>
 class RandomGenerator {
@@ -39,9 +24,8 @@ public:
             _param = param_type(std::numeric_limits<T>::min(), std::numeric_limits<T>::max());
     }
 
-    constexpr value_type operator()() const {
-        const auto seed = std::chrono::steady_clock::now().time_since_epoch().count();
-        std::mt19937_64 gen(seed); 
+    auto operator()() const {
+        std::mt19937 gen(std::rand()); 
         distribution_type dist(_param);   
         return static_cast<value_type>(dist(gen));
     }
@@ -55,7 +39,6 @@ class TypeRandomSequence : public ::testing::Test {
 public:
     using container_type = Container;
     using value_type = typename container_type::value_type;
-    using generator_type = RandomGenerator<value_type>;
 
     static constexpr size_t SIZE = 128;
     
@@ -67,21 +50,9 @@ public:
 
 protected:
     void Fill(const size_t size) {
-        generator_type gen;
         container.resize(size);
-        std::generate(std::begin(container), std::end(container), gen);
+        std::generate(std::begin(container), std::end(container), RandomGenerator<value_type>());
     }
 
     container_type container;
-};
-
-template<class Container>
-class ParamRandomSequence : public TypeRandomSequence<Container>, public ::testing::WithParamInterface<int> {
-public:
-    virtual void SetUp() override {
-        const auto lenght = GetParam();
-        this->Fill(lenght);
-    }
-
-    virtual ~ParamRandomSequence() {}
 };

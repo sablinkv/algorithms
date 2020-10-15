@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.15)
 set(SOURCES
     test_utils.cpp
     test_sort.cpp
+    test_stable_sort.cpp
 )
 
 set(HEADERS

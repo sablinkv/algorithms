@@ -25,6 +25,17 @@ TEST_P(TestSuiteName, TestName##_LAMBDA) {                          \
     });                                                             \
 }
 
+template<class Container>
+class ParamRandomSequence : public TypeRandomSequence<Container>, public ::testing::WithParamInterface<int> {
+public:
+    virtual void SetUp() override {
+        const auto lenght = GetParam();
+        this->Fill(lenght);
+    }
+
+    virtual ~ParamRandomSequence() {}
+};
+
 class RandomIteratorTest : public ParamRandomSequence<std::vector<uint16_t>> {};
 class BidirectionalIteratorTest : public ParamRandomSequence<std::list<uint16_t>> {};
 class ForwardIteratorTest : public ParamRandomSequence<std::forward_list<uint16_t>> {};
@@ -127,10 +138,10 @@ SORT_TEST_P(ForwardIteratorTest, TreeSort, algorithms::tree_sort)
 
 const static std::vector<int> LengthParam { 0, 1, 2, 31, 512, 1023 };
 
-INSTANTIATE_TEST_CASE_P(SortTest, RandomIteratorTest, ::testing::ValuesIn(LengthParam));
-INSTANTIATE_TEST_CASE_P(SortTest, BidirectionalIteratorTest, ::testing::ValuesIn(LengthParam));
-INSTANTIATE_TEST_CASE_P(SortTest, ForwardIteratorTest, ::testing::ValuesIn(LengthParam));
+INSTANTIATE_TEST_SUITE_P(SortTest, RandomIteratorTest, ::testing::ValuesIn(LengthParam));
+INSTANTIATE_TEST_SUITE_P(SortTest, BidirectionalIteratorTest, ::testing::ValuesIn(LengthParam));
+INSTANTIATE_TEST_SUITE_P(SortTest, ForwardIteratorTest, ::testing::ValuesIn(LengthParam));
 
-INSTANTIATE_TEST_CASE_P(SortTest, RandomIteratorTestFloat, ::testing::ValuesIn(LengthParam));
-INSTANTIATE_TEST_CASE_P(SortTest, BidirectionalIteratorTestFloat, ::testing::ValuesIn(LengthParam));
-INSTANTIATE_TEST_CASE_P(SortTest, ForwardIteratorTestFloat, ::testing::ValuesIn(LengthParam));
+INSTANTIATE_TEST_SUITE_P(SortTest, RandomIteratorTestFloat, ::testing::ValuesIn(LengthParam));
+INSTANTIATE_TEST_SUITE_P(SortTest, BidirectionalIteratorTestFloat, ::testing::ValuesIn(LengthParam));
+INSTANTIATE_TEST_SUITE_P(SortTest, ForwardIteratorTestFloat, ::testing::ValuesIn(LengthParam));
