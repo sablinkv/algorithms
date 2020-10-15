@@ -26,7 +26,7 @@ namespace algorithms {
 	} // namespace detail
 
 	/*
-		Shell sort - NOT STABLE
+		Shell sort - UNSTABLE
 		Complexity:
 			Worst		case - O(N^2);
 			Average		case - θ(N (lgN)^2);

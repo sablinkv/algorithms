@@ -18,7 +18,7 @@ namespace algorithms {
 	} // namespace detail
 
 	/*
-		Bubble sort - NOT STABLE
+		Bubble sort - UNSTABLE
 		Complexity:
 			Worst		case - O(N^2);
 			Average		case - θ(N^2);

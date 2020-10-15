@@ -33,7 +33,7 @@ namespace algorithms {
 	} // namespace detail
 
 	/*
-		Comb sort - NOT STABLE
+		Comb sort - UNSTABLE
 		Complexity:
 			Worst		case - O(N^2);
 			Average		case - θ(N^2 / 2^p), where 'p' is a number of increment;

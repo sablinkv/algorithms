@@ -15,7 +15,7 @@ namespace algorithms {
 	} // namespace detail
 
 	/*
-		Selection sort - NOT STABLE
+		Selection sort - UNSTABLE
 		Complexity:
 			Worst		case - O(N^2);
 			Average		case - θ(N^2);

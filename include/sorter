@@ -1,0 +1,25 @@
+#pragma once
+
+// Sorter headers
+#include <sorters/sorter_adapter.hpp>
+#include <sorters/sorter_policy.hpp>
+#include <sorters/binary_insertion_sorter.hpp>
+#include <sorters/bubble_sorter.hpp>
+#include <sorters/bucket_sorter.hpp>
+#include <sorters/comb_sorter.hpp>
+#include <sorters/counting_sorter.hpp>
+#include <sorters/gnome_sorter.hpp>
+#include <sorters/heap_sorter.hpp>
+#include <sorters/insertion_sorter.hpp>
+#include <sorters/insertion_sorter.hpp>
+#include <sorters/merge_sorter.hpp>
+#include <sorters/patience_sorter.hpp>
+#include <sorters/quick_sorter.hpp>
+#include <sorters/radix_sorter.hpp>
+#include <sorters/selection_sorter.hpp>
+#include <sorters/shaker_sorter.hpp>
+#include <sorters/shell_sorter.hpp>
+#include <sorters/smooth_sorter.hpp>
+#include <sorters/stooge_sorter.hpp>
+#include <sorters/tim_sorter.hpp>
+#include <sorters/tree_sorter.hpp>

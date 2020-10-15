@@ -24,7 +24,7 @@ namespace algorithms {
 	} // namespace detail
 
 	/*
-		Stooge sort - NOT STABLE
+		Stooge sort - UNSTABLE
 		Complexity:
 			Worst		case - O(N^2.71);
 			Average		case - θ(N^2.71);

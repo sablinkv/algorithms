@@ -55,7 +55,7 @@ namespace algorithms {
 	} // namespace detail
 
 	/*
-		Patience sort - NOT STABLE
+		Patience sort - UNSTABLE
 		Complexity:
 			Worst		case - O(N lgN);
 			Average		case - θ(N lgN);

@@ -68,7 +68,7 @@ namespace algorithms {
 	} // namespace detail
 
 	/*
-		Heap sort - NOT STABLE
+		Heap sort - UNSTABLE
 		Complexity:
 			Worst		case - O(N lgN);
 			Average		case - θ(N lgN);

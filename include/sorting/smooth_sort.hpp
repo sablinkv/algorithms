@@ -141,7 +141,7 @@ namespace algorithms {
     } // namespace detail
 
     /*
-        Smoot sort - NOT STABLE
+        Smoot sort - UNSTABLE
         Complexity:
             Worst		case - O(N lgN);
             Average		case - θ(N lgN);

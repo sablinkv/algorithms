@@ -65,7 +65,7 @@ namespace algorithms {
 	};
 
 	/*
-		Quick sort Hoare partition - NOT STABLE
+		Quick sort Hoare partition - UNSTABLE
 		Complexity:
 			Worst		case - O(N^2);
 			Average		case - θ(N lgN);
@@ -84,7 +84,7 @@ namespace algorithms {
 	}
 
 	/*
-		Quick sort Lomuto partition - NOT STABLE
+		Quick sort Lomuto partition - UNSTABLE
 		Complexity:
 			Worst		case - O(N^2);
 			Average		case - θ(N lgN);
@@ -101,4 +101,15 @@ namespace algorithms {
 			detail::Quick_sort_unchecked(First, Last, Compare, lomuto_partition());
 		}
 	}
+
+	template<class Bidirectional_iterator, class Binary_predicate = std::less<>, class Partition_type = hoare_partition,
+		class = std::enable_if_t<is_sortable_v<Bidirectional_iterator, std::bidirectional_iterator_tag>>
+	>inline void quick_sort(Bidirectional_iterator First, Bidirectional_iterator Last, Binary_predicate Compare = {}, Partition_type Partition = {})
+	{
+		if (utility::verify_range(First, Last, 1)) {
+			utility::verify_comparator(First, std::next(First), Compare);
+			detail::Quick_sort_unchecked(First, Last, Compare, Partition);
+		}
+	}
+
 } // namespace algorithms

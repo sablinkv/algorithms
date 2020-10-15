@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "heap_sort.hpp"
+#include "quick_sort.hpp"
 #include <utils>
 #include <vector>
 #include <algorithm>
@@ -27,7 +27,7 @@ namespace algorithms {
 			});
 
 			std::for_each(Table.begin(), Table.end(), [&Compare](std::vector<value_type>& Bucket) {
-				Heap_sort_unchecked(Bucket.begin(), Bucket.end(), Compare);
+				Quick_sort_unchecked(Bucket.begin(), Bucket.end(), Compare, hoare_partition());
 			});
 
 			std::for_each(Table.begin(), Table.end(), [&First](const std::vector<value_type>& Bucket) {
@@ -46,7 +46,7 @@ namespace algorithms {
 		Space:
 			Add			costs - O(N + k, where k depends on load factor).
 	*/
-	template<class Forward_iterator, class Binary_predicate,
+	template<class Forward_iterator, class Binary_predicate = std::less<>(),
 		class = std::enable_if_t<is_sortable_v<Forward_iterator, std::forward_iterator_tag>>
 	>inline void bucket_sort(Forward_iterator First, Forward_iterator Last, Binary_predicate Compare = Binary_predicate())
 	{
