@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.15)
 
 # Project detail
-project(algorithms VERSION 0.0.1 LANGUAGES CXX)
+project(algorithms VERSION 0.0.2 LANGUAGES CXX)
 message(STATUS "Project: ${PROJECT_NAME}")
 message(STATUS "Version: ${PROJECT_VERSION}")
 
