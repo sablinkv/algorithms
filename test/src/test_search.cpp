@@ -79,6 +79,10 @@ TYPED_TEST_P(BaseSequence, ExponentialSearch) {
     BINARY_SEARCH_BODY(algorithms::exponential_search, this->container, this->GetComparator(), 0);
 }
 
+TYPED_TEST_P(BaseSequence, TernarySearch) {
+    BINARY_SEARCH_BODY(algorithms::ternary_search, this->container, this->GetComparator(), 0);
+}
+
 REGISTER_TYPED_TEST_SUITE_P(BaseSequence,
     LinearSearch,
     RandomSearch,
@@ -86,7 +90,8 @@ REGISTER_TYPED_TEST_SUITE_P(BaseSequence,
     UpperBound,
     BinarySearch,
     JumpSearch,
-    ExponentialSearch
+    ExponentialSearch,
+    TernarySearch
 );
 
 using Types = ::testing::Types<AscendingSequence, DescendignSequence>;

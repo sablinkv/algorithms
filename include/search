@@ -6,3 +6,4 @@
 #include <searching/random_search.hpp>
 #include <searching/jump_search.hpp>
 #include <searching/exponential_search.hpp>
+#include <searching/ternary_search.hpp>
