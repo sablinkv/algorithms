@@ -4,3 +4,5 @@
 #include <searching/linear_search.hpp>
 #include <searching/binary_search.hpp>
 #include <searching/random_search.hpp>
+#include <searching/jump_search.hpp>
+#include <searching/exponential_search.hpp>
